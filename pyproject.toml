@@ -7,10 +7,13 @@ authors = [
     { name = "t-faugue-ece", email = "titouan.faugue@edu.ece.fr" }
 ]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "faker>=40.37.0",
+]
 
 [project.scripts]
-s3uv1 = "s3uv1:main"
+dataset-users = "S3UV1.dataset_users:main"
+dataset-orders = "S3UV1.dataset_orders:main"
 
 [build-system]
 requires = ["uv_build>=0.12.10,<0.13.0"]
