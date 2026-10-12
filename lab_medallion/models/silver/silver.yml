@@ -7,6 +7,10 @@ models:
         data_tests:
           - unique
           - not_null
+      - name: username_normalized
+        description: Username without surrounding whitespace, in lowercase.
+        data_tests:
+          - not_null
       - name: email
         data_tests:
           - unique
@@ -31,6 +35,24 @@ models:
       - name: order_id
         data_tests:
           - unique
+          - not_null
+      - name: quantity
+        data_tests:
+          - not_null
+          - positive
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4, 5]
+                quote: false
+      - name: product
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["bread", "brioche", "cookie", "croissant", "donut", "drink"]
+      - name: birthdate_is_valid
+        description: False when the original birthdate is later than the first order of the user; the birthdate is then set to NULL.
+        data_tests:
           - not_null
       - name: user_id
         data_tests:
